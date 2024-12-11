@@ -1,6 +1,6 @@
 import express from 'express';
 
-const express = require('express');
+//const express = require('express');
 const SuperheroeController = require('../controllers/SuperheroeController');
 
 //const router = express.Router();

@@ -2,7 +2,7 @@ import { obtenerSuperheroePorId, obtenerTodosLosSuperheroes, buscarSuperheroePor
 import { renderizarListaSuperheroes, renderizarSuperheroe } from "../views/responseView.mjs";
 
 //**** */
-const SuperheroeService = require('../services/SuperheroeService');
+import {SuperheroeService} from "../services/superheroesService.mjs";
 
 class SuperheroeController {
     async crearSuperheroe(req, res) {
