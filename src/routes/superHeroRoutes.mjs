@@ -1,33 +1,39 @@
 import express from 'express';
-
-//const express = require('express');
-const SuperheroeController = require('../controllers/SuperheroeController');
-
-//const router = express.Router();
-
-
-
-
-
+import { body } from 'express-validator';
 import { 
-  obtenerSuperheroePorIdController,
-  obtenerTodosLosSuperheroesController,
-  buscarSuperheroePorAtributoController,
-  obtenerSuperheroesMayoresDe30Controller
+  obtenerTodosLosSuperHeroesController,  
+  obtenerSuperHeroePorIdController, 
+  buscarSuperheroesPorAtributoController,
+  obtenerSuperHeroesMayoresDe30Controller,
+// nuevos endpoints
+  insertSuperHeroesController,
+  updateSuperHeroesController,
+  eliminarSuperHeroesController,
+  eliminarByNameSuperHeroesController 
 } from '../controllers/superheroesController.mjs';
 
-console.log('Entro a la lista de los endpoinds')
+// nuevo tema validaciones
+
+import superheroesValidaciones from '../validations/superHeroesValidations.mjs';
+import { manejadorValidacionErrores } from "../middlewares/errorMiddleware.mjs";
+
 const router = express.Router();
 
-router.get('/heroes', obtenerTodosLosSuperheroesController);
-router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroePorAtributoController);
-router.get('/heroes/buscar/mayores-30', obtenerSuperheroesMayoresDe30Controller);
-router.get('/heroes/:id', obtenerSuperheroePorIdController);
-router.post('/superheroe', SuperheroeController.crearSuperheroe);
-// router.get(`/todosSuperH`,obtenerTodosLosSuperheroesController);
-// router.get(`/superH/:id`);
-// router.post(`/`);
+// correr con postman
+
+router.get('/heroes', obtenerTodosLosSuperHeroesController);
+router.get('/heroes/:id', obtenerSuperHeroePorIdController);
+router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoController);
+router.get('/heroes/buscar/mayores30', obtenerSuperHeroesMayoresDe30Controller);
+
+//nuevos endpoint agregados del Sprint_03_TP_1
+// Nuevos endpoinds 
+    // se agregan validaciones
+router.post('/heroe', superheroesValidaciones, manejadorValidacionErrores, insertSuperHeroesController);  // ok
+router.put('/heroe/update/:id', superheroesValidaciones, updateSuperHeroesController); 
+
+router.delete('/heroe/delete/:id', eliminarSuperHeroesController);
+router.delete('/heroe/deleteByName/:name', eliminarByNameSuperHeroesController);
 
 
-//module.exports = router;
 export default router;
