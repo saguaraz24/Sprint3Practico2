@@ -1,27 +1,15 @@
 import express from 'express';
-import { connectDB } from './config/dbConfig.mjs';
-import superheroesRoutes from './routes/superHeroRoutes.mjs';
-//import blogRouter from './routes/blog.mjs'
-
+import mongoose from 'mongoose';
+import superheroeRoutes from './routes/superheroeRoutes.mjs';
 
 const app = express();
-const PORT = 3000;
+
+mongoose.connect('mongodb://localhost/superheroes_db');
 
 app.use(express.json());
+app.use('/api', superheroeRoutes);
 
-connectDB();
-
-//*** */
-//app.use(`/blogs`, blogRouter);
-app.use('/api', superheroesRoutes);
-//**** */
-
-app.use((req, res) => {
-  res.status(404).send({ error: 'Ruta no encontrada'});
-});
-
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Escuchando en puerto ${PORT}`);
-  console.log(`Corriendo en http://localhost:${PORT}`);
-  
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });

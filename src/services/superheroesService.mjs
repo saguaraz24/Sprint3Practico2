@@ -1,4 +1,4 @@
-import superHeroRepository from "../repositories/SuperHeroRepository.mjs";
+import superHeroRepository from "../repositories/superheroeRepository.mjs";
 
 //const superHeroRepository = new SuperHeroRepository();
 
