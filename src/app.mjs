@@ -1,10 +1,12 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import superheroeRoutes from './routes/superheroeRoutes.mjs';
+import { connectDB } from './config/dbConfig.mjs';
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/superheroes_db');
+//mongoose.connect('mongodb://localhost/superheroes_db');
+connectDB();
 
 app.use(express.json());
 app.use('/api', superheroeRoutes);
