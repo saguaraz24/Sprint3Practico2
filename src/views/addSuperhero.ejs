@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Superhéroe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        div {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Agregar Superhéroe</h1>
+    <form action="/api/superheroes" method="POST">
+        <div>
+            <label for="nombreSuperheroe">Nombre del Superhéroe</label>
+            <input type="text" id="nombreSuperheroe" name="nombreSuperheroe" required>
+        </div>
+        <div>
+            <label for="nombreReal">Nombre Real</label>
+            <input type="text" id="nombreReal" name="nombreReal" required>
+        </div>
+        <div>
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" name="edad" required min="0">
+        </div>
+        <div>
+            <label for="planetaOrigen">Planeta de Origen</label>
+            <input type="text" id="planetaOrigen" name="planetaOrigen" required>
+        </div>
+        <div>
+            <label for="debilidad">Debilidad</label>
+            <input type="text" id="debilidad" name="debilidad" required>
+        </div>
+        <div> 
+            <label for="poderes">Poderes</label> <textarea id="poderes" name="poderes" placeholder="Ingrese los poderes, separados por comas" required></textarea> 
+        </div> 
+        <div> 
+            <label for="aliados">Aliados</label> <textarea id="aliados" name="aliados" placeholder="Ingrese los aliados, separados por comas" required></textarea> 
+        </div> 
+        <div> 
+            <label for="enemigos">Enemigos</label> <textarea id="enemigos" name="enemigos" placeholder="Ingrese los enemigos, separados por comas" required></textarea>
+        </div>
+        <button type="submit">Agregar Superhéroe</button>
+    </form>
+</body>
+</html>

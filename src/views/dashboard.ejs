@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard de Superhéroes</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button { 
+            padding: 5px 10px; 
+            background-color: #3543dc; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+        } button:hover { 
+            background-color: #787575; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Superhéroes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Superhéroe</th>
+                <th>Nombre Real</th>
+                <th>Edad</th>
+                <th>Planeta Origen</th>
+                <th>Debilidad</th>
+                <th>Poderes</th>
+                <th>Aliados</th>
+                <th>Enemigos</th>
+                <th>Creación Registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% superheroes.forEach(function(superheroe) { %>
+                <tr>
+                    <td><%= superheroe.nombreSuperheroe %></td>
+                    <td><%= superheroe.nombreReal %></td>
+                    <td><%= superheroe.edad %></td>
+                    <td><%= superheroe.planetaOrigen %></td>
+                    <td><%= superheroe.debilidad %></td>
+                    <td><%= superheroe.poderes.join(', ') %></td>
+                    <td><%= superheroe.aliados.join(', ') %></td>
+                    <td><%= superheroe.enemigos.join(', ') %></td>
+                    <td><%= superheroe.createdAt %></td>
+                    <td> 
+                        <form action="/api/superheroes/<%= superheroe._id %>?_method=DELETE" method="POST"> 
+                            <button type="submit">Eliminar</button> 
+                        </form> 
+                        <td>
+                        </form action="/api/superheroes/<%= superheroe._id %>?_method=PUT" method="POST">
+
+                        <button type="submit">Actualizar</button>
+                        <!-- <input type="text" id="nombreSuperheroe" name="nombreSuperheroe" value="<%= superheroe.nombreSuperheroe %>" required>
+                        <input type="text" id="nombreReal" name="nombreReal" value="<%= superheroe.nombreReal %>" required>
+                        <input type="number" id="edad" name="edad" value="<%= superheroe.edad %>" required min="0">
+                        <input type="text" id="planetaOrigen" name="planetaOrigen" value="<%= superheroe.planetaOrigen %>" required>
+                        <input type="text" id="debilidad" name="debilidad" value="<%= superheroe.debilidad %>" required>
+                        <textarea id="poderes" name="poderes" required><%= superheroe.poderes.join(', ') %></textarea>
+                        <textarea id="aliados" name="aliados" required><%= superheroe.aliados.join(', ') %></textarea>
+                        <textarea id="enemigos" name="enemigos" required><%= superheroe.enemigos.join(', ') %></textarea> -->
+                    </td>
+                    </form>
+                    </td>
+                    
+                    
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

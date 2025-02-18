@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Superhéroes</title>
+</head>
+<body>
+    <h1>Lista de Superhéroes</h1>
+    <ul>
+        <% superheroes.forEach(function(superheroe) { %>
+            <li><%= superheroe.nombreSuperheroe %> - <%= superheroe.nombreReal %></li>
+        <% }); %>
+    </ul>
+</body>
+</html>
